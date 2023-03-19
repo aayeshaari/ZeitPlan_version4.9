@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ZeitPlan.Views.Student.View_TimeTable" Title="View TimeTable" >
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="View All" Clicked="ToolbarItem_Clicked"/>
+
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+
+        <ScrollView>
+            <StackLayout Padding="0">
+                <ActivityIndicator x:Name="LoadingInd" IsRunning="False" />
+
+                <StackLayout Padding="24">
+                    <Picker Title="Select Day"  SelectedIndexChanged="ddlDay_SelectedIndexChanged" x:Name="ddlDay">
+                            <Picker.Items>
+                                <x:String>Monday</x:String>
+                                <x:String>Tuesday</x:String>
+                                <x:String>Wednesday</x:String>
+                                <x:String>Thursday</x:String>
+                                <x:String>Friday</x:String>
+                                <x:String>Saturday</x:String>
+                            </Picker.Items>
+                        </Picker>
+
+                </StackLayout>
+               
+
+                <ListView x:Name="DataList"  HasUnevenRows="True">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <!--<StackLayout Padding="24" >
+                                    <Grid ColumnDefinitions="150,*" VerticalOptions="Center" HorizontalOptions="Center"  RowDefinitions="*" Grid.ColumnSpan="2" Grid.RowSpan="9" >
+                                        --><!--<Label Grid.Row="0"   FontAttributes="Bold" Grid.Column="0" BackgroundColor="LightBlue"  Text="TimeTable_ID:"/>
+                                        <Label Grid.Row="0" Grid.Column="1"  BackgroundColor="LightGray"  x:Name="TimeTableID"/>--><!--
+                                        <Label BackgroundColor="LightBlue"    FontAttributes="Bold" Grid.Row="0"  Grid.Column="0" Text="Class:"/>
+                                        <Label Grid.Row="0"   BackgroundColor="LightGray" Grid.Column="1" Text="{Binding CLASS_NAME}" x:Name="ClassFID"/>
+
+                                        <Label Grid.Row="1"    FontAttributes="Bold" Grid.Column="0" BackgroundColor="LightBlue"   Text="Course:"/>
+                                        <Label Grid.Row="1" Grid.Column="1"  BackgroundColor="LightGray" Text="{Binding COURSE_NAME}" x:Name="CourseFID"/>
+                                        <Label Grid.Row="2"    FontAttributes="Bold" Grid.Column="0" BackgroundColor="LightBlue"   Text="Slot Name:"/>
+                                        <Label Grid.Row="2" Grid.Column="1"  BackgroundColor="LightGray" Text="{Binding SLOT_NAME}" x:Name="Slot Name"/>
+                                        <Label Grid.Row="3"    FontAttributes="Bold" Grid.Column="0" BackgroundColor="LightBlue"   Text="Day:"/>
+                                        <Label Grid.Row="3" Grid.Column="1"  BackgroundColor="LightGray" Text="{Binding DAY}" x:Name="Day"/>
+
+
+                                        <Label Grid.Row="4"    FontAttributes="Bold" Grid.Column="0" BackgroundColor="LightBlue"   Text="Slot_Start_Time:"/>
+                                        <Label Grid.Row="4" Grid.Column="1"  BackgroundColor="LightGray" Text="{Binding SLOT_START_TIME}" x:Name="SlotStartTime"/>
+                                        <Label Grid.Row="5"    FontAttributes="Bold" Grid.Column="0" BackgroundColor="LightBlue"   Text="Slot_End_Time:"/>
+                                        <Label Grid.Row="5" Grid.Column="1"  BackgroundColor="LightGray" Text="{Binding SLOT_END_TIME}" x:Name="SlotEndTime"/>
+                                        <Label Grid.Row="6"    FontAttributes="Bold" Grid.Column="0" BackgroundColor="LightBlue"   Text="Room:"/>
+                                        <Label Grid.Row="6" Grid.Column="1"  BackgroundColor="LightGray" Text="{Binding ROOM_NO}" x:Name="RoomFID"/>
+
+                                        <Label Grid.Row="7"    FontAttributes="Bold" Grid.Column="0" BackgroundColor="LightBlue"   Text="Teacher:"/>
+                                        <Label Grid.Row="7" Grid.Column="1"  BackgroundColor="LightGray" Text="{Binding TEACHER_NAME}" x:Name="TeacherFID"/>
+                                    </Grid>
+                                </StackLayout>-->
+                                <StackLayout Padding="24" >
+
+
+                                    <Grid ColumnDefinitions="150,*" VerticalOptions="Center" HorizontalOptions="Center"  RowDefinitions="*" Grid.ColumnSpan="2" Grid.RowSpan="9" >
+                                        <!--<Label Grid.Row="0"   FontAttributes="Bold" TextColor="#bd6513"  Grid.Column="0" BackgroundColor="White"  Text="TimeTable_ID:"/>
+                                        <Label Grid.Row="0" Grid.Column="1" TextColor="#bd6513" BackgroundColor="White"  x:Name="TimeTableID"/>-->
+                                        <Label  TextColor="#bd6513" BackgroundColor="White" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"   FontAttributes="Bold" Grid.Row="0"  Grid.Column="0" Text="Class:"/>
+                                        <Label Grid.Row="0"  HorizontalTextAlignment="Center" VerticalTextAlignment="Center"  TextColor="#bd6513" BackgroundColor="White" Grid.Column="1" Text="{Binding CLASS_NAME}" x:Name="ClassFID"/>
+
+                                        <Label Grid.Row="1" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"   FontAttributes="Bold" Grid.Column="0" TextColor="#bd6513" BackgroundColor="White"   Text="Course:"/>
+                                        <Label Grid.Row="1" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.Column="1"  TextColor="#bd6513" BackgroundColor="White" Text="{Binding COURSE_NAME}" x:Name="CourseFID"/>
+                                        <Label Grid.Row="2" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"   FontAttributes="Bold" Grid.Column="0" TextColor="#bd6513" BackgroundColor="White"   Text="Slot Name:"/>
+                                        <Label Grid.Row="2" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.Column="1"  TextColor="#bd6513" BackgroundColor="White" Text="{Binding SLOT_NAME}" x:Name="Slot Name"/>
+                                        <Label Grid.Row="3" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"   FontAttributes="Bold" Grid.Column="0" TextColor="#bd6513" BackgroundColor="White"  Text="Day:"/>
+                                        <Label Grid.Row="3" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.Column="1"  TextColor="#bd6513" BackgroundColor="White" Text="{Binding DAY}" x:Name="Day"/>
+
+
+                                        <Label Grid.Row="4" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"   FontAttributes="Bold" Grid.Column="0"  TextColor="#bd6513" BackgroundColor="White"   Text="Slot_Start_Time:"/>
+                                        <Label Grid.Row="4" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.Column="1"  TextColor="#bd6513" BackgroundColor="White" Text="{Binding SLOT_START_TIME}" x:Name="SlotStartTime"/>
+                                        <Label Grid.Row="5"  HorizontalTextAlignment="Center" VerticalTextAlignment="Center"  FontAttributes="Bold" Grid.Column="0" TextColor="#bd6513" BackgroundColor="White"   Text="Slot_End_Time:"/>
+                                        <Label Grid.Row="5" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.Column="1"  TextColor="#bd6513" BackgroundColor="White" Text="{Binding SLOT_END_TIME}" x:Name="SlotEndTime"/>
+                                        <Label Grid.Row="6"  HorizontalTextAlignment="Center" VerticalTextAlignment="Center"  FontAttributes="Bold" Grid.Column="0"  TextColor="#bd6513" BackgroundColor="White"  Text="Room:"/>
+                                        <Label Grid.Row="6" Grid.Column="1"  HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="#bd6513" BackgroundColor="White" Text="{Binding ROOM_NO}" x:Name="RoomFID"/>
+
+                                        <Label Grid.Row="7"    FontAttributes="Bold" Grid.Column="0"  TextColor="#bd6513" BackgroundColor="White" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"  Text="Teacher:"/>
+                                        <Label Grid.Row="7" Grid.Column="1" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="#bd6513" BackgroundColor="White" Text="{Binding TEACHER_NAME}" x:Name="TeacherFID"/>
+                                    </Grid>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
+
+
+
+

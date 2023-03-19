@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ZeitPlan.Views.Admin.TeacherCourseAssign_Detail" Title="Teacher course Assign Detail">
+    <ContentPage.Content>
+        <StackLayout Padding="24" Margin="0,30" >
+
+            <ActivityIndicator x:Name="LoadingInd" IsRunning="False" />
+            <Frame BackgroundColor="#bd6513" HasShadow="True" HeightRequest="400" WidthRequest="400" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+
+                <Grid ColumnDefinitions="130,160" VerticalOptions="Center" HorizontalOptions="Center"  RowDefinitions="60,60,60" Grid.ColumnSpan="2" Grid.RowSpan="3" >
+                    <!--<Label Grid.Row="0" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="#bd6513"  FontAttributes="Bold" Grid.Column="0" BackgroundColor="White"  Text="TeacherCourseAssign_ID:"/>
+                    <Label Grid.Row="0" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="#bd6513" Grid.Column="1"  BackgroundColor="White"  x:Name="TeacherCourseAssignID"/>-->
+                    <Label Grid.Row="1"  HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="#bd6513"  FontAttributes="Bold" Grid.Column="0" BackgroundColor="White"   Text="Course Name:"/>
+                    <Label Grid.Row="1" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="#bd6513" Grid.Column="1"  BackgroundColor="White"  x:Name="CourseName"/>
+                    <Label Grid.Row="2"  HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="#bd6513"  FontAttributes="Bold" Grid.Column="0" BackgroundColor="White"   Text="Teacher Name:"/>
+                    <Label Grid.Row="2" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="#bd6513" Grid.Column="1"  BackgroundColor="White"  x:Name="TeacherName"/>
+                </Grid>
+            </Frame>
+        </StackLayout>
+
+    </ContentPage.Content>
+</ContentPage>
